@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何成为一名数据科学家？ | Felixmonkey&#39;s blog</title>
+  <meta name="baidu-site-verification" content="MmXbjwJb9V" />
+  <meta name="author" content="Felixmonkey">
+  
+  <meta name="description" content="如何成为一名数据科学家">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="如何成为一名数据科学家？"/>
+  <meta property="og:site_name" content="Felixmonkey&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Felixmonkey&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'true']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Felixmonkey&#39;s blog</a></h1>
+  <h2><a href="/">追寻兴趣时保持年轻，与人相处时保持成熟。</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>   
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">存档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-12-17T08:46:33.000Z"><a href="/2014/12/17/如何成为一名数据科学家？/">12月 17 2014</a></time>
+      
+      
+  
+    <h1 class="title">如何成为一名数据科学家？</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+				
+				<div id="toc" class="toc-article">
+						<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#学好python"><span class="toc-number">1.</span> <span class="toc-text">学好python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学好统计学习"><span class="toc-number">2.</span> <span class="toc-text">学好统计学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习数据处理"><span class="toc-number">3.</span> <span class="toc-text">学习数据处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变成全能工程师（full_stack_engineer）"><span class="toc-number">4.</span> <span class="toc-text">变成全能工程师（full stack engineer）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读，读，读！"><span class="toc-number">5.</span> <span class="toc-text">读，读，读！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要不要上个研究生课程？"><span class="toc-number">6.</span> <span class="toc-text">要不要上个研究生课程？</span></a></li></ol>
+		</div>
+		
+        <p><a id="more"></a><br>本文转自<a href="http://bbs.pinggu.org/thread-3487171-1-1.html" target="_blank" rel="external">http://bbs.pinggu.org/thread-3487171-1-1.html</a></p>
+<p>整理自：知乎<br>“Data Science = statistics who uses python and lives in San Francisco”</p>
+<p>恰好我马上启程到Twitter的data science team，而且恰巧懂一点点统计和住在旧金山，所以冲动地没有邀请就厚脸回答了:D</p>
+<p>我认为有几个大方面</p>
+<h2 id="学好python">学好python</h2>
+<hr>
+<p>现在几乎所以公司的数据都可以api给你，而python的数据处理能力强大且方便。加之在machine learning的很多算法上，python也独俏一方。另外，它的简明方便迅速迭代开发，15分钟写完个算法就可以看效果了。</p>
+<p>除此之外，py还有点酷酷的感觉。任何程序拿matlab和c++都是可以写的，不过我真没认识过哪个d愿意自己把自己扔那个不酷的框框里:D</p>
+<p>对不规则输入的处理也给python一个巨大的优势。通常来说，在我现在日常的工作里，所有的数据都是以纯文本但是非格式的形式存储的（raw text, unstructured data)。问题在于，这些文本不可以直接当作各种算法的输入，你需要</p>
+<blockquote>
+<ul>
+<li>分词，分句</li>
+<li>提取特征</li>
+<li>整理缺失数据</li>
+<li>除掉异类（outlier）</li>
+</ul>
+</blockquote>
+<p>在这些时候，python可谓是神器。这里做的1-4都可以直接在scikit-learn里面找到对应的工具，而且，即使是要自己写一个定制的算法处理某些特殊需求，也就是一百行代码的事情。</p>
+<p>简而言之，对于数据科学面临的挑战，python可以让你短平快地解决手中的问题，而不是担心太多实现细节。</p>
+<h2 id="学好统计学习">学好统计学习</h2>
+<hr>
+<p>略拗口。统计学习的概念就是“统计机器学习方法”。<br>统计和计算机科学前几十年互相平行着，互相造出了对方造出的一系列工具，算法。但是直到最近人们开始注意到，计算机科学家所谓的机器学习其实就是统计里面的prediction而已。因此这两个学科又开始重新融合。</p>
+<p>为什么统计学习很重要？</p>
+<p>因为，纯粹的机器学习讲究算法预测能力和实现，但是统计一直就强调“可解释性”。比如说，针对今天微博股票发行就上升20%，你把你的两个预测股票上涨还是下跌的model套在新浪的例子上，然后给你的上司看。<br>Model-1有99%的预测能力，也就是99%的情况下它预测对，但是Model-2有95%，不过它有例外的一个附加属性——可以告诉你为什么这个股票上涨或者下跌。</p>
+<p>试问，你的上司会先哪个？问问你自己会选哪个？</p>
+<p>显然是后者。因为前者虽然有很强的预测力（机器学习），但是没有解释能力（统计解释）。</p>
+<p>而作为一个数据科学家，80%的时间你是需要跟客户，团队或者上司解释为什么A可行B不可行。如果你告诉他们，“我现在的神经网络就是能有那么好的预测力可是我根本就没法解释上来”，那么，没有人会愿意相信你。</p>
+<p>具体一些，怎么样学习统计学习？</p>
+<blockquote>
+<ul>
+<li>先学好基本的概率学。如果大学里的还给老师了（跟我一样），那么可以从MIT的概率论教材 <a href="http://ocw.mit.edu/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2005/" target="_blank" rel="external">Introduction to Probability and Statistics</a> 入手。从第1章到第9章看完并做完所有的习题。（p.s.面试Twitter的时候被问到一个拿球后验概率的问题，从这本书上抓来的）。</li>
+<li>了解基本的统计检验及它们的假设，什么时候可以用到它们。</li>
+<li>快速了解统计学习有哪些术语，用来做什么目的，读这本 <a href="http://vdisk.weibo.com/s/duBqLNujNjwoc" target="_blank" rel="external">All of statistics: a concise course in statistical inference</a>。</li>
+<li>学习基本的统计思想。有frequentist的统计，也有bayesian的统计。前者的代表作有 <a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/" target="_blank" rel="external">The Elements of Statistical Learning</a> ，后者看 <a href="http://vdisk.weibo.com/s/fK0MK" target="_blank" rel="external">Pattern recognition and machine learning</a> 。前者是统计学习的圣书，偏frequentist，后者是pattern recognition的圣书，几乎从纯bayesian的角度来讲。注意,如果直接看<code>The Elements of Statistical Learning</code>感觉力不从心，那么可以先从它的简易版开始看。简易版 <a href="http://www-bcf.usc.edu/~gareth/ISL/" target="_blank" rel="external">Introduction to Statistical Learning</a> 是作者在coursera上开课用的大众教材，简单不少（不过仍然有很多闪光点，通俗易懂）。对于<code>Pattern recognition and machine learning</code>，一开始很难直接啃下来，但是啃下来会受益匪浅。</li>
+</ul>
+</blockquote>
+<p>注意，以上的书搜一下几乎全可以在网上搜到别人传的pdf。有条件的同学可以买一下纸制版来读，体验更好并且可以支持一下作者。所有的书我都买了纸制版，但是我知道在国内要买本书有多不方便（以及原版书多贵）。</p>
+<p>读完以上的书是个长期过程。但是大概读了一遍之后，我个人觉得是非常值得的。如果你只是知道怎么用一些软件包，那么你一定成不了一个合格的data scientist。因为只要问题稍加变化，你就不知道怎么解决了。</p>
+<p>如果你感觉自己是一个二吊子数据科学家（我也是）那么问一下下面几个问题，如果有2个答不上来，那么你就跟我一样，真的还是二吊子而已，继续学习吧。</p>
+<blockquote>
+<ul>
+<li>为什么在神经网络里面feature需要standardize而不是直接扔进去</li>
+<li>对Random Forest需要做Cross-Validatation来避免overfitting吗？</li>
+<li>用naive-bayesian来做bagging，是不是一个不好的选择？为什么？</li>
+<li>在用ensembe方法的时候，特别是Gradient Boosting Tree的时候，我需要把树的结构变得更复杂（high variance, low bias)还是更简单（low variance, high bias)呢？为什么？</li>
+</ul>
+</blockquote>
+<p>如果你刚开始入门，没有关系，回答不出来这些问题很正常。如果你是一个二吊子，体会一下，为什么你跟一流的data scientist还有些差距——因为你不了解每个算法是怎么工作，当你想要把你的问题用那个算法解决的时候，面对无数的细节，你就无从下手了。</p>
+<p>说个题外话，我很欣赏一个叫Jiro的寿司店，它的店长在（东京？）一个最不起眼的地铁站开了一家全世界最贵的餐馆，预订要提前3个月。怎么做到的？70年如一日练习如何做寿司。70年！除了丧娶之外的假期，店长每天必到，8个小时工作以外继续练习寿司做法。</p>
+<p>其实学数据科学也一样，沉下心来，练习匠艺。</p>
+<h2 id="学习数据处理">学习数据处理</h2>
+<hr>
+<p>这一步不必独立于2来进行。显然，你在读这些书的时候会开始碰到各种算法，而且这里的书里也会提到各种数据。但是这个年代最不值钱的就是数据了（拜托，为什么还要用80年代的“加州房价数据”？），值钱的是数据分析过后提供给决策的价值。那么与其纠结在这么悲剧的80年代数据集上，为什么不自己搜集一些呢？</p>
+<blockquote>
+<ul>
+<li>开始写一个小程序，用API爬下Twitter上随机的tweets（或者weibo吧。。。）</li>
+<li>对这些tweets的text进行分词，处理噪音（比如广告）</li>
+<li>用一些现成的label作为label，比如tweet里会有这条tweet被转发了几次</li>
+<li>尝试写一个算法，来预测tweet会被转发几次</li>
+<li>在未见的数据集上进行测试</li>
+</ul>
+</blockquote>
+<p>如上的过程不是一日之功，尤其刚刚开始入门的时候。慢慢来，耐心大于进度。</p>
+<h2 id="变成全能工程师（full_stack_engineer）">变成全能工程师（full stack engineer）</h2>
+<hr>
+<p>在公司环境下，作为一个新入职的新手，你不可能有优待让你在需要写一个数据可视化的时候，找到一个同事来给你做。需要写把数据存到数据库的时候，找另一个同事来给你做。</p>
+<p>况且即使你有这个条件，这样频繁切换上下文会浪费更多时间。比如你让同事早上给你塞一下数据到数据库，但是下午他才给你做好。或者你需要很长时间给他解释，逻辑是什么，存的方式是什么。</p>
+<p>最好的变法，是把你自己武装成一个全能工作师。你不需要成为各方面的专家，但是你一定需要各方面都了解一点，查一下文档可以上手就用。</p>
+<blockquote>
+<ul>
+<li>会使用NoSQL。尤其是MongoDB</li>
+<li>学会基本的visualization，会用基础的html和javascript，知道<a href="http://d3js.org/" target="_blank" rel="external">d3</a>这个可视化库，以及<a href="http://highcharts.com/" target="_blank" rel="external">highchart</a></li>
+<li>学习基本的算法和算法分析，知道如何分析算法复杂度。平均复杂度，最坏复杂度。每次写完一个程序，自己预计需要的时间（用算法分析来预测）。推荐<a href="https://www.coursera.org/course/algs4partI" target="_blank" rel="external">普林斯顿的算法课</a>（注意，可以从算法1开始，它有两个版本）</li>
+<li>写一个基础的服务器，用<a href="http://flask.pocoo.org/" target="_blank" rel="external">flask</a>的基本模板写一个可以让你做可视化分析的backbone。</li>
+<li>学习使用一个顺手的IDE，VIM， pycharm都可以。</li>
+</ul>
+</blockquote>
+<h2 id="读，读，读！">读，读，读！</h2>
+<hr>
+<p>除了闭门造车，你还需要知道其它数据科学家在做些啥。涌现的各种新的技术，新的想法和新的人，你都需要跟他们交流，扩大知识面，以便更好应对新的工作挑战。</p>
+<p>通常，非常厉害的数据科学家都会把自己的blog放到网上供大家参观膜拜。我推荐一些我常看的。另外，学术圈里也有很多厉害的数据科学家，不必怕看论文，看了几篇之后，你就会觉得：哈！我也能想到这个！</p>
+<p>读blog的一个好处是，如果你跟他们交流甚欢，甚至于你可以从他们那里要一个实习来做！</p>
+<p>betaworks首席数据科学家，<a href="http://giladlotan.com/" target="_blank" rel="external">Gilad Lotan</a>的博客，我从他这里要的intern :D<br><a href="http://edchi.blogspot.com/" target="_blank" rel="external">Ed Chi</a>，六年本科硕士博士毕业的神人，google data science<br><a href="http://www.hilarymason.com/" target="_blank" rel="external">Hilary Mason</a>，bitly首席科学家，纽约地区人尽皆知的数据科学家</p>
+<p>在它们这里看够了之后，你会发现还有很多值得看的blog（他们会在文章里面引用其它文章的内容），这样滚雪球似的，你可以有够多的东西早上上班的路上读了：）</p>
+<h2 id="要不要上个研究生课程？">要不要上个研究生课程？</h2>
+<hr>
+<p>先说我上的网络课程：<br>Coursera.org<br><a href="https://www.coursera.org/course/machlearning" target="_blank" rel="external">https://www.coursera.org/course/machlearning</a><br>前者就不说了，人人都知道。后者我则更喜欢，因为教得更广阔，上课的教授也是世界一流的机器学习学者，而且经常会有一些很妙的点出来，促进思考。</p>
+<p>对于是不是非要去上个研究生（尤其要不要到美国上），我觉得不是特别有必要。如果你收到了几个著名大学数据科学方向的录取，那开开心心地来，你会学到不少东西。但是如果没有的话，也不必纠结。我曾有幸上过或者旁听过美国这里一些顶级名校的课程，我感觉它的作用仍然是把你领进门，以及给你一个能跟世界上最聪明的人一个交流机会（我指那些教授）。除此之外，修行都是回家在寝室进行的。然而现在世界上最好的课程都摆在你的面前，为什么还要舍近求远呢。</p>
+<p>总结一下吧<br>我很幸运地跟一些最好的数据科学家交流共事过，从他们的经历看和做事风格来看，真正的共性是</p>
+<p>他们都很聪明——你也可以<br>他们都很喜欢自己做的东西——如果你不喜欢应该也不会看这个问题<br>他们都很能静下心来学东西——如果足够努力你也可以</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/数据挖掘/">数据挖掘</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/数据科学/">数据科学</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<nav id="pagination" >
+    
+    
+    <a href="/2014/12/17/R语言基础知识2/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- 多说热评文章 start -->
+	<div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+<!-- 多说热评文章 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://felixmonkey.github.io/2014/12/17/如何成为一名数据科学家？/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:felixmonkey.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/R/">R</a><small>2</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/书籍/">书籍</a><small>1</small></li>
+  
+    <li><a href="/categories/数据挖掘/">数据挖掘</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/R语言/" style="font-size: 20.00px;">R语言</a><a href="/tags/linux命令/" style="font-size: 20.00px;">linux命令</a><a href="/tags/python-tricks/" style="font-size: 10.00px;">python tricks</a><a href="/tags/影响力/" style="font-size: 10.00px;">影响力</a><a href="/tags/数据科学/" style="font-size: 10.00px;">数据科学</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2774928135&verifier=a427a000&dpc=1">
+</iframe>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" title="hexo">hexo</a></li>
+<li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
+<li><a href="http://zjdian.com/" title="中继点's Blog">中继点</a></li>
+<li><a href="http://leijun00.github.io/" title="雷军's Blog">程序员雷军</a></li>
+<li><a href="http://blog.csdn.net/v_july_v/" title="结构之法 算法之道">研究者July</a></li>
+<li><a href="http://blog.csdn.net/abcjennifer/" title="Rachel Zhang's Blog">Rachel Zhang的专栏</a></li>
+<li><a href="http://www.cnblogs.com/tornadomeet/archive/2012/06/24/2560261.html" title="tornadomeet">tornadomeet</a></li>
+<li><a href="http://blog.csdn.net/zouxy09/article/details/14222605/" title="zouxy09的专栏">zouxy09的专栏</a></li>
+<li><a href="http://www.cnblogs.com/matthewbai/" title="matthew-bai">matthew-bai</a></li>
+<li><a href="http://blog.csdn.net/itplus/article/details/21905449/" title="peghoty's Blog">peghoty</a></li>
+<li><a href="http://www.cnblogs.com/jerrylead/tag/Machine%20Learning/" title="JerryLead's Blog">JerryLead</a></li>
+<li><a href="http://www.52nlp.cn/category/hidden-markov-model/page/3" title="我爱自然语言处理">我爱自然语言处理</a></li>
+<li><a href="http://mindhacks.cn/" title="刘未鹏's Blog">刘未鹏</a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Felixmonkey
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'felixmonkey';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57377559-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
