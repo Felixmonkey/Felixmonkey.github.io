@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>R语言基础知识1 | Felixmonkey&#39;s blog</title>
+  <meta name="baidu-site-verification" content="MmXbjwJb9V" />
+  <meta name="author" content="Felixmonkey">
+  
+  <meta name="description" content="R语言基础知识">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="R语言基础知识1"/>
+  <meta property="og:site_name" content="Felixmonkey&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Felixmonkey&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'true']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Felixmonkey&#39;s blog</a></h1>
+  <h2><a href="/">追寻兴趣时保持年轻，与人相处时保持成熟。</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>   
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">存档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-12-17T07:34:18.000Z"><a href="/2014/12/17/R语言基础知识1/">12月 17 2014</a></time>
+      
+      
+  
+    <h1 class="title">R语言基础知识1</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+				
+				<div id="toc" class="toc-article">
+						<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象类型"><span class="toc-number">1.</span> <span class="toc-text">对象类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象Vector"><span class="toc-number">2.</span> <span class="toc-text">对象Vector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Matrices"><span class="toc-number">3.</span> <span class="toc-text">Matrices</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List"><span class="toc-number">4.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Factors"><span class="toc-number">5.</span> <span class="toc-text">Factors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#data_frame"><span class="toc-number">6.</span> <span class="toc-text">data frame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Names"><span class="toc-number">7.</span> <span class="toc-text">Names</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊值数据"><span class="toc-number">8.</span> <span class="toc-text">特殊值数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取数据类型信息的一些有用函数"><span class="toc-number">9.</span> <span class="toc-text">获取数据类型信息的一些有用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">10.</span> <span class="toc-text">参考文档</span></a></li></ol>
+		</div>
+		
+        <p><a id="more"></a><br><code>学习R之前，须先安装</code><a href="http://cran.rstudio.com" target="_blank" rel="external">R</a><code>和</code><a href="http://www.rstudio.com/products/rstudio/download/" target="_blank" rel="external">RStudio</a> :-)</p>
+<h2 id="对象类型">对象类型</h2>
+<hr>
+<p>R中有五类最基本的对象类型：<br><code>character</code> :字符型<br><code>numeric</code> :(real numbers) 数值型：实数或小数<br><code>integer</code> :整型<br><code>complex</code> :复数型<br><code>logical</code> :(True/False) 逻辑型</p>
+<h2 id="对象Vector">对象Vector</h2>
+<hr>
+<p>一个vector中只能包含同类型的对象(除了<code>list</code>，它可以包含各种类型的对象)<br>vector（）函数有两个basic arguments，第一个是vector中的对象类型，第二个是vector的长度。<br>numbers在R中被认为是numeric类型，若明确想要integer类型，则在numbers后加上<code>L</code>.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">&gt; x &lt;- 1        </span></span></div><div class="line">&gt; <span class="class"><span class="keyword">class</span>(<span class="title">x</span>)</span></div><div class="line">[<span class="number">1</span>] <span class="string">"numeric"</span></div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">&gt; x &lt;- 1L</span></span></div><div class="line">&gt; <span class="class"><span class="keyword">class</span>(<span class="title">x</span>)</span></div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div></pre></td></tr></table></figure>
+
+<p>c（）函数也可构造向量对象，可以看成<code>concatenate</code>连接或<code>combine</code>组合：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- c(<span class="number">0.5</span>, <span class="number">0.6</span>) <span class="comment">## numeric</span></div><div class="line">&gt; x &lt;- c(<span class="literal">TRUE</span>, <span class="literal">FALSE</span>) <span class="comment">## logical</span></div><div class="line">&gt; x &lt;- c(<span class="literal">T</span>, <span class="literal">F</span>) <span class="comment">## logical</span></div><div class="line">&gt; x &lt;- c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>) <span class="comment">## character</span></div><div class="line">&gt; x &lt;- <span class="number">9</span>:<span class="number">29</span> <span class="comment">## integer</span></div><div class="line">&gt; x &lt;- c(<span class="number">1</span>+<span class="number">0i</span>, <span class="number">2</span>+<span class="number">4i</span>) <span class="comment">## complex</span></div></pre></td></tr></table></figure>
+
+<p>使用vector（）：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- <span class="keyword">vector</span>(<span class="string">"numeric"</span>, <span class="built_in">length</span> = <span class="number">10</span>) </div><div class="line">&gt; x</div><div class="line"> [<span class="number">1</span>] <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+
+<p>隐式类型转换</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; y &lt;- c(<span class="number">1.7</span>, <span class="string">"a"</span>) <span class="comment">## character</span></div><div class="line">&gt; y &lt;- c(<span class="keyword">TRUE</span>, <span class="number">2</span>) <span class="comment">## numeric</span></div><div class="line">&gt; y &lt;- c(<span class="string">"a"</span>, <span class="keyword">TRUE</span>) <span class="comment">## character</span></div></pre></td></tr></table></figure>
+
+<p>显式类型转换</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">&gt; x &lt;- 0:6</span></span></div><div class="line">&gt; <span class="class"><span class="keyword">class</span>(<span class="title">x</span>)</span></div><div class="line"><span class="input"><span class="prompt">[1] "integer"</span></span></div><div class="line">&gt; as.numeric(x)</div><div class="line"><span class="input"><span class="prompt">[1] 0 1 2 3 4 5 6</span></span></div><div class="line">&gt; as.logical(x)</div><div class="line"><span class="input"><span class="prompt">[1] FALSE TRUE TRUE TRUE TRUE TRUE TRUE</span></span></div><div class="line">&gt; as.character(x)</div><div class="line">[<span class="number">1</span>] <span class="string">"0"</span> <span class="string">"1"</span> <span class="string">"2"</span> <span class="string">"3"</span> <span class="string">"4"</span> <span class="string">"5"</span> <span class="string">"6"</span></div></pre></td></tr></table></figure>
+
+<h2 id="Matrices">Matrices</h2>
+<hr>
+<p>Matrices是一种具有维度属性的vector,维度为integer型，大小为2，分别为矩阵的行数和列数</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&gt; m &lt;- matrix(nrow = <span class="number">2</span>, ncol = <span class="number">3</span>) </div><div class="line">&gt; m</div><div class="line"> [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</div><div class="line">[<span class="number">1</span>,] <span class="literal">NA</span> <span class="literal">NA</span> <span class="literal">NA</span></div><div class="line">[<span class="number">2</span>,] <span class="literal">NA</span> <span class="literal">NA</span> <span class="literal">NA</span></div><div class="line">&gt; dim(m)</div><div class="line">[<span class="number">1</span>] <span class="number">2</span> <span class="number">3</span></div><div class="line">&gt; attributes(m)</div><div class="line">$dim</div><div class="line">[<span class="number">1</span>] <span class="number">2</span> <span class="number">3</span></div><div class="line"><span class="comment">##按列放置填充矩阵</span></div><div class="line">&gt; m &lt;- matrix(<span class="number">1</span>:<span class="number">6</span>, nrow = <span class="number">2</span>, ncol = <span class="number">3</span>) </div><div class="line">&gt; m</div><div class="line">     [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</div><div class="line">[<span class="number">1</span>,]   <span class="number">1</span>    <span class="number">3</span>    <span class="number">5</span></div><div class="line">[<span class="number">2</span>,]   <span class="number">2</span>    <span class="number">4</span>    <span class="number">6</span></div><div class="line"><span class="comment">##可以通过给向量加入维度的属性来构造Matrix</span></div><div class="line">&gt; m &lt;- <span class="number">1</span>:<span class="number">10</span></div><div class="line">&gt; m</div><div class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> <span class="number">10</span></div><div class="line">&gt; dim(m) &lt;- c(<span class="number">2</span>, <span class="number">5</span>)</div><div class="line">&gt; m</div><div class="line">     [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>] [,<span class="number">5</span>]</div><div class="line">[<span class="number">1</span>,]   <span class="number">1</span>    <span class="number">3</span>    <span class="number">5</span>    <span class="number">7</span>    <span class="number">9</span></div><div class="line">[<span class="number">2</span>,]   <span class="number">2</span>    <span class="number">4</span>    <span class="number">6</span>    <span class="number">8</span>   <span class="number">10</span></div><div class="line"><span class="comment">##matrix转化为vector</span></div><div class="line">&gt; as.vector(m)</div><div class="line"> [<span class="number">1</span>]  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span>  <span class="number">9</span> <span class="number">10</span></div><div class="line"><span class="comment">##也可以通过cbind()和rbind()函数构造Matrix</span></div><div class="line">&gt; x &lt;- <span class="number">1</span>:<span class="number">3</span></div><div class="line">&gt; y &lt;- <span class="number">10</span>:<span class="number">12</span></div><div class="line">&gt; cbind(x, y)</div><div class="line">     x  y </div><div class="line">[<span class="number">1</span>,] <span class="number">1</span> <span class="number">10</span></div><div class="line">[<span class="number">2</span>,] <span class="number">2</span> <span class="number">11</span></div><div class="line">[<span class="number">3</span>,] <span class="number">3</span> <span class="number">12</span></div><div class="line">&gt; rbind(x, y) </div><div class="line">  [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</div><div class="line">x  <span class="number">1</span>    <span class="number">2</span>     <span class="number">3</span></div><div class="line">y  <span class="number">10</span>   <span class="number">11</span>   <span class="number">12</span></div></pre></td></tr></table></figure>
+
+<h2 id="List">List</h2>
+<hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#list中可以包含各种类型的对象，对象的index用<span class="string">[[ ]]</span></div><div class="line">&gt; x &lt;- list(<span class="number">1</span>, <span class="string">"a"</span>, TRUE, <span class="number">1</span> + <span class="number">4</span>i) </div><div class="line">&gt; x</div><div class="line"><span class="string">[[1]]</span></div><div class="line">[<span class="number">1</span>] <span class="number">1</span></div><div class="line"><span class="string">[[2]]</span> </div><div class="line">[<span class="number">1</span>] <span class="string">"a"</span></div><div class="line"><span class="string">[[3]]</span></div><div class="line">[<span class="number">1</span>] TRUE</div><div class="line"><span class="string">[[4]]</span></div><div class="line">[<span class="number">1</span>] <span class="number">1</span>+<span class="number">4</span>i</div></pre></td></tr></table></figure>
+
+<h2 id="Factors">Factors</h2>
+<hr>
+<p>因子记录分类属性的数据，使用有标签的factor要优于整型向量，更有描述性</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- factor(c(<span class="string">"yes"</span>, <span class="string">"yes"</span>, <span class="string">"no"</span>, <span class="string">"yes"</span>, <span class="string">"no"</span>)) </div><div class="line">&gt; x</div><div class="line">[<span class="number">1</span>] <span class="literal">yes</span> <span class="literal">yes</span> <span class="literal">no</span> <span class="literal">yes</span> <span class="literal">no</span></div><div class="line"><span class="attribute">Levels</span>: <span class="literal">no</span> <span class="literal">yes</span></div><div class="line">&gt; table(x) </div><div class="line">x</div><div class="line"><span class="literal">no</span> <span class="literal">yes</span> </div><div class="line"> <span class="number">2</span>  <span class="number">3</span></div><div class="line"><span class="comment">##去掉分类信息,则x变成integer</span></div><div class="line">&gt; unclass(x)</div><div class="line">[<span class="number">1</span>] <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span></div><div class="line">attr(,<span class="string">"levels"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"no"</span> <span class="string">"yes"</span></div><div class="line"><span class="comment">##通过levels参数来改变level的顺序，yes变为第一level</span></div><div class="line">&gt; x &lt;- factor(c(<span class="string">"yes"</span>, <span class="string">"yes"</span>, <span class="string">"no"</span>, <span class="string">"yes"</span>, <span class="string">"no"</span>),</div><div class="line"> levels = c(<span class="string">"yes"</span>, <span class="string">"no"</span>))</div><div class="line">&gt; x</div><div class="line">[<span class="number">1</span>] <span class="literal">yes</span> <span class="literal">yes</span> <span class="literal">no</span> <span class="literal">yes</span> <span class="literal">no</span> </div><div class="line"><span class="attribute">Levels</span>: <span class="literal">yes</span> <span class="literal">no</span></div></pre></td></tr></table></figure>
+
+<h2 id="data_frame">data frame</h2>
+<hr>
+<p>数据框储存表格数据，它可以将几个不同类型但长度相同的向量用data.frame（）函数合并到一个数据框，它的模样就像二维数组。但要注意：合并的几个向量长度必需一致。每一列数据类型可以不同，可以通过<code>data.matrix（）</code>将数据框转换为矩阵。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- <span class="typedef"><span class="keyword">data</span>.frame<span class="container">(<span class="title">foo</span> = 1:4, <span class="title">bar</span> = <span class="title">c</span>(<span class="type">T</span>, <span class="type">T</span>, <span class="type">F</span>, <span class="type">F</span>)</span>) </span></div><div class="line">&gt; x</div><div class="line">  foo   bar</div><div class="line"><span class="number">1</span>  <span class="number">1</span>   <span class="type">TRUE</span></div><div class="line"><span class="number">2</span>  <span class="number">2</span>   <span class="type">TRUE</span></div><div class="line"><span class="number">3</span>  <span class="number">3</span>   <span class="type">FALSE</span></div><div class="line"><span class="number">4</span>  <span class="number">4</span>   <span class="type">FALSE</span></div><div class="line">&gt; nrow(x)</div><div class="line">[<span class="number">1</span>] <span class="number">4</span></div><div class="line">&gt; ncol(x)</div><div class="line">[<span class="number">1</span>] <span class="number">2</span></div></pre></td></tr></table></figure>
+
+<h2 id="Names">Names</h2>
+<hr>
+<p>对象也可以有名字</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- 1<span class="value">:<span class="number">3</span></span></div><div class="line">&gt; <span class="function">names</span>(x)</div><div class="line">NULL</div><div class="line">&gt; <span class="function">names</span>(x) &lt;- <span class="function">c</span>(<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"norf"</span>) </div><div class="line">&gt; x</div><div class="line">foo bar norf </div><div class="line"> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></div><div class="line">&gt; <span class="function">names</span>(x)</div><div class="line">[<span class="number">1</span>] <span class="string">"foo"</span> <span class="string">"bar"</span> <span class="string">"norf"</span></div><div class="line">##list也有名字</div><div class="line">&gt; x &lt;- <span class="function">list</span>(a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span>) </div><div class="line">&gt; x</div><div class="line"><span class="variable">$a</span></div><div class="line">[<span class="number">1</span>] <span class="number">1</span></div><div class="line"><span class="variable">$b</span> </div><div class="line">[<span class="number">1</span>] <span class="number">2</span></div><div class="line"><span class="variable">$c</span> </div><div class="line">[<span class="number">1</span>] <span class="number">3</span></div><div class="line">##matrix的名字dimnames</div><div class="line">&gt; m &lt;- <span class="function">matrix</span>(<span class="number">1</span>:<span class="number">4</span>, nrow = <span class="number">2</span>, ncol = <span class="number">2</span>)</div><div class="line">&gt; <span class="function">dimnames</span>(m) &lt;- <span class="function">list</span>(<span class="function">c</span>(<span class="string">"a"</span>, <span class="string">"b"</span>), <span class="function">c</span>(<span class="string">"c"</span>, <span class="string">"d"</span>)) </div><div class="line">&gt; m</div><div class="line">   c  d </div><div class="line">a  <span class="number">1</span>  <span class="number">3</span></div><div class="line">b  <span class="number">2</span>  <span class="number">4</span></div></pre></td></tr></table></figure>
+
+<h2 id="特殊值数据">特殊值数据</h2>
+<hr>
+<p>为确保所有数据都能被正确识别、计算或统计等，R定义了一些特殊值数据：<br><code>NULL</code>：空数据<br><code>NA</code>：表示无数据<br><code>NaN</code>：表示非数字,代表未定义的值，即<code>not a number</code><br>一个<code>NaN</code>的值也是<code>NA</code>，但是反过来不成立<br><code>inf</code>：数字除以0得到的值,无穷大<br>判断数据是否为这些特殊数据<br><code>is.null(x)</code> <code>is.na(x)</code> <code>is.nan(x)</code> <code>is.infinite(x)</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- c(<span class="number">1</span>, <span class="number">2</span>, NA, <span class="number">10</span>, <span class="number">3</span>)</div><div class="line">&gt; <span class="keyword">is</span>.na(x)</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">TRUE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span></div><div class="line">&gt; <span class="keyword">is</span>.nan(x)</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span></div><div class="line">&gt; x &lt;- c(<span class="number">1</span>, <span class="number">2</span>, NaN, NA, <span class="number">4</span>)</div><div class="line">&gt; <span class="keyword">is</span>.na(x)</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">TRUE</span> <span class="literal">TRUE</span> <span class="literal">FALSE</span></div><div class="line">&gt; <span class="keyword">is</span>.nan(x)</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">TRUE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span></div></pre></td></tr></table></figure>
+
+<h2 id="获取数据类型信息的一些有用函数">获取数据类型信息的一些有用函数</h2>
+<hr>
+<p>getClass( )函数我们前面已经见过了，它的参数是表示类的字符串。<br>class( )可获取一个数据对象所属的类，它的参数是对象名称。<br>str( )可获取数据对象的结构组成，这很有用。<br>mode( )和storage.mode( )可获取对象的存储模式。<br>typeof( )获取数据的类型或存储模式。<br>？<code>函数名</code>：函数帮助<br>？’<code>operator</code>‘:操作符帮助，如？’：’</p>
+<h2 id="参考文档">参考文档</h2>
+<hr>
+<p>[1] <a href="https://www.coursera.org/course/rprog" target="_blank" rel="external">R Programming</a> in coursera<br>[2] <a href="/recommend/153分钟学会R.pdf">153分钟学会R</a><br>[3] <a href="http://blog.sina.com.cn/s/blog_800158330101dno5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_800158330101dno5.html</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/R/">R</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/R语言/">R语言</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<nav id="pagination" >
+    
+    
+    <a href="/2014/12/17/影响力/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- 多说热评文章 start -->
+	<div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+<!-- 多说热评文章 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://felixmonkey.github.io/2014/12/17/R语言基础知识1/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:felixmonkey.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/R/">R</a><small>1</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/书籍/">书籍</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/R语言/" style="font-size: 10.00px;">R语言</a><a href="/tags/linux命令/" style="font-size: 20.00px;">linux命令</a><a href="/tags/python-tricks/" style="font-size: 10.00px;">python tricks</a><a href="/tags/影响力/" style="font-size: 10.00px;">影响力</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2774928135&verifier=a427a000&dpc=1">
+</iframe>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" title="hexo">hexo</a></li>
+<li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
+<li><a href="http://zjdian.com/" title="中继点's Blog">中继点</a></li>
+<li><a href="http://leijun00.github.io/" title="雷军's Blog">程序员雷军</a></li>
+<li><a href="http://blog.csdn.net/v_july_v/" title="结构之法 算法之道">研究者July</a></li>
+<li><a href="http://blog.csdn.net/abcjennifer/" title="Rachel Zhang's Blog">Rachel Zhang的专栏</a></li>
+<li><a href="http://www.cnblogs.com/tornadomeet/archive/2012/06/24/2560261.html" title="tornadomeet">tornadomeet</a></li>
+<li><a href="http://blog.csdn.net/zouxy09/article/details/14222605/" title="zouxy09的专栏">zouxy09的专栏</a></li>
+<li><a href="http://www.cnblogs.com/matthewbai/" title="matthew-bai">matthew-bai</a></li>
+<li><a href="http://blog.csdn.net/itplus/article/details/21905449/" title="peghoty's Blog">peghoty</a></li>
+<li><a href="http://www.cnblogs.com/jerrylead/tag/Machine%20Learning/" title="JerryLead's Blog">JerryLead</a></li>
+<li><a href="http://www.52nlp.cn/category/hidden-markov-model/page/3" title="我爱自然语言处理">我爱自然语言处理</a></li>
+<li><a href="http://mindhacks.cn/" title="刘未鹏's Blog">刘未鹏</a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Felixmonkey
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'felixmonkey';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57377559-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

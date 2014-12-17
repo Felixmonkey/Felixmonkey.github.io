@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Felixmonkey's blog]]></title>
+  <subtitle><![CDATA[追寻兴趣时保持年轻，与人相处时保持成熟。]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://felixmonkey.github.io/"/>
+  <updated>2014-12-17T08:03:39.923Z</updated>
+  <id>http://felixmonkey.github.io/</id>
+  
+  <author>
+    <name><![CDATA[Felixmonkey]]></name>
+    
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[R语言基础知识1]]></title>
+    <link href="http://felixmonkey.github.io/2014/12/17/R%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%861/"/>
+    <id>http://felixmonkey.github.io/2014/12/17/R语言基础知识1/</id>
+    <published>2014-12-17T07:34:18.000Z</published>
+    <updated>2014-12-17T08:02:34.000Z</updated>
+    <content type="html"><![CDATA[<p><a id="more"></a><br><code>学习R之前，须先安装</code><a href="http://cran.rstudio.com" target="_blank" rel="external">R</a><code>和</code><a href="http://www.rstudio.com/products/rstudio/download/" target="_blank" rel="external">RStudio</a> :-)</p>
+<h2 id="对象类型">对象类型</h2>
+<hr>
+<p>R中有五类最基本的对象类型：<br><code>character</code> :字符型<br><code>numeric</code> :(real numbers) 数值型：实数或小数<br><code>integer</code> :整型<br><code>complex</code> :复数型<br><code>logical</code> :(True/False) 逻辑型</p>
+<h2 id="对象Vector">对象Vector</h2>
+<hr>
+<p>一个vector中只能包含同类型的对象(除了<code>list</code>，它可以包含各种类型的对象)<br>vector（）函数有两个basic arguments，第一个是vector中的对象类型，第二个是vector的长度。<br>numbers在R中被认为是numeric类型，若明确想要integer类型，则在numbers后加上<code>L</code>.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">&gt; x &lt;- 1        </span></span></div><div class="line">&gt; <span class="class"><span class="keyword">class</span>(<span class="title">x</span>)</span></div><div class="line">[<span class="number">1</span>] <span class="string">"numeric"</span></div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">&gt; x &lt;- 1L</span></span></div><div class="line">&gt; <span class="class"><span class="keyword">class</span>(<span class="title">x</span>)</span></div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div></pre></td></tr></table></figure>
+
+<p>c（）函数也可构造向量对象，可以看成<code>concatenate</code>连接或<code>combine</code>组合：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- c(<span class="number">0.5</span>, <span class="number">0.6</span>) <span class="comment">## numeric</span></div><div class="line">&gt; x &lt;- c(<span class="literal">TRUE</span>, <span class="literal">FALSE</span>) <span class="comment">## logical</span></div><div class="line">&gt; x &lt;- c(<span class="literal">T</span>, <span class="literal">F</span>) <span class="comment">## logical</span></div><div class="line">&gt; x &lt;- c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>) <span class="comment">## character</span></div><div class="line">&gt; x &lt;- <span class="number">9</span>:<span class="number">29</span> <span class="comment">## integer</span></div><div class="line">&gt; x &lt;- c(<span class="number">1</span>+<span class="number">0i</span>, <span class="number">2</span>+<span class="number">4i</span>) <span class="comment">## complex</span></div></pre></td></tr></table></figure>
+
+<p>使用vector（）：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- <span class="keyword">vector</span>(<span class="string">"numeric"</span>, <span class="built_in">length</span> = <span class="number">10</span>) </div><div class="line">&gt; x</div><div class="line"> [<span class="number">1</span>] <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+
+<p>隐式类型转换</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; y &lt;- c(<span class="number">1.7</span>, <span class="string">"a"</span>) <span class="comment">## character</span></div><div class="line">&gt; y &lt;- c(<span class="keyword">TRUE</span>, <span class="number">2</span>) <span class="comment">## numeric</span></div><div class="line">&gt; y &lt;- c(<span class="string">"a"</span>, <span class="keyword">TRUE</span>) <span class="comment">## character</span></div></pre></td></tr></table></figure>
+
+<p>显式类型转换</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">&gt; x &lt;- 0:6</span></span></div><div class="line">&gt; <span class="class"><span class="keyword">class</span>(<span class="title">x</span>)</span></div><div class="line"><span class="input"><span class="prompt">[1] "integer"</span></span></div><div class="line">&gt; as.numeric(x)</div><div class="line"><span class="input"><span class="prompt">[1] 0 1 2 3 4 5 6</span></span></div><div class="line">&gt; as.logical(x)</div><div class="line"><span class="input"><span class="prompt">[1] FALSE TRUE TRUE TRUE TRUE TRUE TRUE</span></span></div><div class="line">&gt; as.character(x)</div><div class="line">[<span class="number">1</span>] <span class="string">"0"</span> <span class="string">"1"</span> <span class="string">"2"</span> <span class="string">"3"</span> <span class="string">"4"</span> <span class="string">"5"</span> <span class="string">"6"</span></div></pre></td></tr></table></figure>
+
+<h2 id="Matrices">Matrices</h2>
+<hr>
+<p>Matrices是一种具有维度属性的vector,维度为integer型，大小为2，分别为矩阵的行数和列数</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&gt; m &lt;- matrix(nrow = <span class="number">2</span>, ncol = <span class="number">3</span>) </div><div class="line">&gt; m</div><div class="line"> [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</div><div class="line">[<span class="number">1</span>,] <span class="literal">NA</span> <span class="literal">NA</span> <span class="literal">NA</span></div><div class="line">[<span class="number">2</span>,] <span class="literal">NA</span> <span class="literal">NA</span> <span class="literal">NA</span></div><div class="line">&gt; dim(m)</div><div class="line">[<span class="number">1</span>] <span class="number">2</span> <span class="number">3</span></div><div class="line">&gt; attributes(m)</div><div class="line">$dim</div><div class="line">[<span class="number">1</span>] <span class="number">2</span> <span class="number">3</span></div><div class="line"><span class="comment">##按列放置填充矩阵</span></div><div class="line">&gt; m &lt;- matrix(<span class="number">1</span>:<span class="number">6</span>, nrow = <span class="number">2</span>, ncol = <span class="number">3</span>) </div><div class="line">&gt; m</div><div class="line">     [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</div><div class="line">[<span class="number">1</span>,]   <span class="number">1</span>    <span class="number">3</span>    <span class="number">5</span></div><div class="line">[<span class="number">2</span>,]   <span class="number">2</span>    <span class="number">4</span>    <span class="number">6</span></div><div class="line"><span class="comment">##可以通过给向量加入维度的属性来构造Matrix</span></div><div class="line">&gt; m &lt;- <span class="number">1</span>:<span class="number">10</span></div><div class="line">&gt; m</div><div class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> <span class="number">10</span></div><div class="line">&gt; dim(m) &lt;- c(<span class="number">2</span>, <span class="number">5</span>)</div><div class="line">&gt; m</div><div class="line">     [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>] [,<span class="number">5</span>]</div><div class="line">[<span class="number">1</span>,]   <span class="number">1</span>    <span class="number">3</span>    <span class="number">5</span>    <span class="number">7</span>    <span class="number">9</span></div><div class="line">[<span class="number">2</span>,]   <span class="number">2</span>    <span class="number">4</span>    <span class="number">6</span>    <span class="number">8</span>   <span class="number">10</span></div><div class="line"><span class="comment">##matrix转化为vector</span></div><div class="line">&gt; as.vector(m)</div><div class="line"> [<span class="number">1</span>]  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span>  <span class="number">9</span> <span class="number">10</span></div><div class="line"><span class="comment">##也可以通过cbind()和rbind()函数构造Matrix</span></div><div class="line">&gt; x &lt;- <span class="number">1</span>:<span class="number">3</span></div><div class="line">&gt; y &lt;- <span class="number">10</span>:<span class="number">12</span></div><div class="line">&gt; cbind(x, y)</div><div class="line">     x  y </div><div class="line">[<span class="number">1</span>,] <span class="number">1</span> <span class="number">10</span></div><div class="line">[<span class="number">2</span>,] <span class="number">2</span> <span class="number">11</span></div><div class="line">[<span class="number">3</span>,] <span class="number">3</span> <span class="number">12</span></div><div class="line">&gt; rbind(x, y) </div><div class="line">  [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</div><div class="line">x  <span class="number">1</span>    <span class="number">2</span>     <span class="number">3</span></div><div class="line">y  <span class="number">10</span>   <span class="number">11</span>   <span class="number">12</span></div></pre></td></tr></table></figure>
+
+<h2 id="List">List</h2>
+<hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#list中可以包含各种类型的对象，对象的index用<span class="string">[[ ]]</span></div><div class="line">&gt; x &lt;- list(<span class="number">1</span>, <span class="string">"a"</span>, TRUE, <span class="number">1</span> + <span class="number">4</span>i) </div><div class="line">&gt; x</div><div class="line"><span class="string">[[1]]</span></div><div class="line">[<span class="number">1</span>] <span class="number">1</span></div><div class="line"><span class="string">[[2]]</span> </div><div class="line">[<span class="number">1</span>] <span class="string">"a"</span></div><div class="line"><span class="string">[[3]]</span></div><div class="line">[<span class="number">1</span>] TRUE</div><div class="line"><span class="string">[[4]]</span></div><div class="line">[<span class="number">1</span>] <span class="number">1</span>+<span class="number">4</span>i</div></pre></td></tr></table></figure>
+
+<h2 id="Factors">Factors</h2>
+<hr>
+<p>因子记录分类属性的数据，使用有标签的factor要优于整型向量，更有描述性</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- factor(c(<span class="string">"yes"</span>, <span class="string">"yes"</span>, <span class="string">"no"</span>, <span class="string">"yes"</span>, <span class="string">"no"</span>)) </div><div class="line">&gt; x</div><div class="line">[<span class="number">1</span>] <span class="literal">yes</span> <span class="literal">yes</span> <span class="literal">no</span> <span class="literal">yes</span> <span class="literal">no</span></div><div class="line"><span class="attribute">Levels</span>: <span class="literal">no</span> <span class="literal">yes</span></div><div class="line">&gt; table(x) </div><div class="line">x</div><div class="line"><span class="literal">no</span> <span class="literal">yes</span> </div><div class="line"> <span class="number">2</span>  <span class="number">3</span></div><div class="line"><span class="comment">##去掉分类信息,则x变成integer</span></div><div class="line">&gt; unclass(x)</div><div class="line">[<span class="number">1</span>] <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span></div><div class="line">attr(,<span class="string">"levels"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"no"</span> <span class="string">"yes"</span></div><div class="line"><span class="comment">##通过levels参数来改变level的顺序，yes变为第一level</span></div><div class="line">&gt; x &lt;- factor(c(<span class="string">"yes"</span>, <span class="string">"yes"</span>, <span class="string">"no"</span>, <span class="string">"yes"</span>, <span class="string">"no"</span>),</div><div class="line"> levels = c(<span class="string">"yes"</span>, <span class="string">"no"</span>))</div><div class="line">&gt; x</div><div class="line">[<span class="number">1</span>] <span class="literal">yes</span> <span class="literal">yes</span> <span class="literal">no</span> <span class="literal">yes</span> <span class="literal">no</span> </div><div class="line"><span class="attribute">Levels</span>: <span class="literal">yes</span> <span class="literal">no</span></div></pre></td></tr></table></figure>
+
+<h2 id="data_frame">data frame</h2>
+<hr>
+<p>数据框储存表格数据，它可以将几个不同类型但长度相同的向量用data.frame（）函数合并到一个数据框，它的模样就像二维数组。但要注意：合并的几个向量长度必需一致。每一列数据类型可以不同，可以通过<code>data.matrix（）</code>将数据框转换为矩阵。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- <span class="typedef"><span class="keyword">data</span>.frame<span class="container">(<span class="title">foo</span> = 1:4, <span class="title">bar</span> = <span class="title">c</span>(<span class="type">T</span>, <span class="type">T</span>, <span class="type">F</span>, <span class="type">F</span>)</span>) </span></div><div class="line">&gt; x</div><div class="line">  foo   bar</div><div class="line"><span class="number">1</span>  <span class="number">1</span>   <span class="type">TRUE</span></div><div class="line"><span class="number">2</span>  <span class="number">2</span>   <span class="type">TRUE</span></div><div class="line"><span class="number">3</span>  <span class="number">3</span>   <span class="type">FALSE</span></div><div class="line"><span class="number">4</span>  <span class="number">4</span>   <span class="type">FALSE</span></div><div class="line">&gt; nrow(x)</div><div class="line">[<span class="number">1</span>] <span class="number">4</span></div><div class="line">&gt; ncol(x)</div><div class="line">[<span class="number">1</span>] <span class="number">2</span></div></pre></td></tr></table></figure>
+
+<h2 id="Names">Names</h2>
+<hr>
+<p>对象也可以有名字</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- 1<span class="value">:<span class="number">3</span></span></div><div class="line">&gt; <span class="function">names</span>(x)</div><div class="line">NULL</div><div class="line">&gt; <span class="function">names</span>(x) &lt;- <span class="function">c</span>(<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"norf"</span>) </div><div class="line">&gt; x</div><div class="line">foo bar norf </div><div class="line"> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></div><div class="line">&gt; <span class="function">names</span>(x)</div><div class="line">[<span class="number">1</span>] <span class="string">"foo"</span> <span class="string">"bar"</span> <span class="string">"norf"</span></div><div class="line">##list也有名字</div><div class="line">&gt; x &lt;- <span class="function">list</span>(a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span>) </div><div class="line">&gt; x</div><div class="line"><span class="variable">$a</span></div><div class="line">[<span class="number">1</span>] <span class="number">1</span></div><div class="line"><span class="variable">$b</span> </div><div class="line">[<span class="number">1</span>] <span class="number">2</span></div><div class="line"><span class="variable">$c</span> </div><div class="line">[<span class="number">1</span>] <span class="number">3</span></div><div class="line">##matrix的名字dimnames</div><div class="line">&gt; m &lt;- <span class="function">matrix</span>(<span class="number">1</span>:<span class="number">4</span>, nrow = <span class="number">2</span>, ncol = <span class="number">2</span>)</div><div class="line">&gt; <span class="function">dimnames</span>(m) &lt;- <span class="function">list</span>(<span class="function">c</span>(<span class="string">"a"</span>, <span class="string">"b"</span>), <span class="function">c</span>(<span class="string">"c"</span>, <span class="string">"d"</span>)) </div><div class="line">&gt; m</div><div class="line">   c  d </div><div class="line">a  <span class="number">1</span>  <span class="number">3</span></div><div class="line">b  <span class="number">2</span>  <span class="number">4</span></div></pre></td></tr></table></figure>
+
+<h2 id="特殊值数据">特殊值数据</h2>
+<hr>
+<p>为确保所有数据都能被正确识别、计算或统计等，R定义了一些特殊值数据：<br><code>NULL</code>：空数据<br><code>NA</code>：表示无数据<br><code>NaN</code>：表示非数字,代表未定义的值，即<code>not a number</code><br>一个<code>NaN</code>的值也是<code>NA</code>，但是反过来不成立<br><code>inf</code>：数字除以0得到的值,无穷大<br>判断数据是否为这些特殊数据<br><code>is.null(x)</code> <code>is.na(x)</code> <code>is.nan(x)</code> <code>is.infinite(x)</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- c(<span class="number">1</span>, <span class="number">2</span>, NA, <span class="number">10</span>, <span class="number">3</span>)</div><div class="line">&gt; <span class="keyword">is</span>.na(x)</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">TRUE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span></div><div class="line">&gt; <span class="keyword">is</span>.nan(x)</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span></div><div class="line">&gt; x &lt;- c(<span class="number">1</span>, <span class="number">2</span>, NaN, NA, <span class="number">4</span>)</div><div class="line">&gt; <span class="keyword">is</span>.na(x)</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">TRUE</span> <span class="literal">TRUE</span> <span class="literal">FALSE</span></div><div class="line">&gt; <span class="keyword">is</span>.nan(x)</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">TRUE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span></div></pre></td></tr></table></figure>
+
+<h2 id="获取数据类型信息的一些有用函数">获取数据类型信息的一些有用函数</h2>
+<hr>
+<p>getClass( )函数我们前面已经见过了，它的参数是表示类的字符串。<br>class( )可获取一个数据对象所属的类，它的参数是对象名称。<br>str( )可获取数据对象的结构组成，这很有用。<br>mode( )和storage.mode( )可获取对象的存储模式。<br>typeof( )获取数据的类型或存储模式。<br>？<code>函数名</code>：函数帮助<br>？’<code>operator</code>‘:操作符帮助，如？’：’</p>
+<h2 id="参考文档">参考文档</h2>
+<hr>
+<p>[1] <a href="https://www.coursera.org/course/rprog" target="_blank" rel="external">R Programming</a> in coursera<br>[2] <a href="/recommend/153分钟学会R.pdf">153分钟学会R</a><br>[3] <a href="http://blog.sina.com.cn/s/blog_800158330101dno5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_800158330101dno5.html</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[R语言基础知识]]>
+    
+    </summary>
+    
+      <category term="R语言" scheme="http://felixmonkey.github.io/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="R" scheme="http://felixmonkey.github.io/categories/R/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[影响力]]></title>
+    <link href="http://felixmonkey.github.io/2014/12/17/%E5%BD%B1%E5%93%8D%E5%8A%9B/"/>
+    <id>http://felixmonkey.github.io/2014/12/17/影响力/</id>
+    <published>2014-12-17T07:24:49.000Z</published>
+    <updated>2014-12-17T07:55:53.000Z</updated>
+    <content type="html"><![CDATA[<p><a id="more"></a><br>　　　　　　　　　　　　　　　　<img src="http://img3.douban.com/lpic/s1657785.jpg" alt=""></p>
+<h2 id="影响力的武器">影响力的武器</h2>
+<hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">我们在要别人帮忙时，要是能给出一个理由，成功的概率会更大。</div><div class="line">一分钱一分货，价格贵等于东西好。（有些消费者好面子，价格贵有面子；商家提高价格反而生意好。）</div><div class="line">对比原理（非常坏的情况-&gt;稍微坏的情况；谈价钱-&gt;先超出自己理想的价格，再根据情况降价）&lt;垫底法&gt;</div></pre></td></tr></table></figure>
+
+<h2 id="互惠">互惠</h2>
+<hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">互惠是行贿的核心原理和依据</div><div class="line">互相给予</div><div class="line">第一个是简单的问候；（点头，微笑，赞扬，节日问候短信）</div><div class="line">第二个层次才是物质礼品；（小礼品）</div><div class="line">第二个层次的礼品就是精神与物质结合。（鲜花，图书，分享好文章；好的礼品不一定是昂贵的东西）</div><div class="line">要是人家给了我们什么好处，我们应当尽量回报；（滴水之恩当涌泉相报）</div><div class="line">礼尚往来。</div><div class="line">接受礼物后，客户会愿意购买本来不愿意买的产品或服务。</div><div class="line">一个人硬塞好处，会增加我们的亏欠感。</div><div class="line">违背互惠原理，接受而不试图回报别人善举的人，不受社会群体欢迎。</div><div class="line">互惠式让步：抢先让步，刺激他人还以让步。</div><div class="line"><span class="keyword">*</span><span class="keyword">*</span>拒绝-后撤<span class="keyword">*</span><span class="keyword">*</span>：先提出较大的要求，找到拒绝后再提出较小的要求。不仅能提高别人答应的概率以外，还能提高对方履行这一要求的概率。（留面子、对比原理、水门事件）<span class="variable">&lt;副作用：别人不再和此人打交道&gt;</span></div><div class="line">防范：别人的建议我们赞同，不妨接受；倘若这提议另有所求，置之不理。</div><div class="line">`理性面对别人的给予`</div></pre></td></tr></table></figure>
+
+<h2 id="承诺和一致">承诺和一致</h2>
+<hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">随着环境的公开度，履行说出的承诺也就越容易。</div><div class="line">言行一致更能说明其个性坚强、智利出众，它是逻辑性、稳定性和诚实感的核心。</div><div class="line">商家卖玩具（先只是做广告，父母承诺小孩，但又买不到，只能用其他玩具替代，等到玩具出来再买）</div><div class="line">主动承诺-&gt;塑造自我形象-&gt;塑造将来自身的行为-&gt;从而巩固自身形象。</div><div class="line">主动承诺-&gt;内压和外压。</div><div class="line">个人承诺防止客户取消合同（客户说出：我喜欢<span class="keyword">...</span>产品之类）</div><div class="line">特别是在不受外界压力时所作的承诺，我们才会发自内心的负责。</div><div class="line">销售人员会通过让你事先承诺，让你跳入他的陷阱（要理智，敢于反驳）</div><div class="line">倾听肠胃的声音。</div></pre></td></tr></table></figure>
+
+<h2 id="社会认同">社会认同</h2>
+<hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">在判断何为正确时，我们会根据别人的意见行事。</div><div class="line">豆瓣书评（判断书的质量）</div><div class="line">罐头笑声（生活大爆炸、家有儿女、friends）</div><div class="line">杀人、自杀这种社会突发情况会有人仿效&lt;<span class="escape">`模</span>仿自杀<span class="escape">`&gt;</span>（要小心）</div><div class="line">减少不确定性（在公共场合遇到突发情况应让周围的人了解你的情况，搞清楚自己的责任）（或在公共场合做事要指明某人）</div><div class="line">雇佣别人捧场（鼓掌。。。）</div><div class="line">赌马（制造这匹马很受欢迎的假象）</div></pre></td></tr></table></figure>
+
+<h2 id="喜好">喜好</h2>
+<hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">人们总是喜欢与自己相识的人，不管相似处在兴趣、观点、个性、背景还是生活方式上，我们总有这样的倾向。（投选票）</div><div class="line">我们特别喜欢听别人恭维奉承。</div><div class="line"><span class="number">1</span>、接触带来的熟悉往往能导致更大的好感，但也会产生让人反感的体验，那就会得到反效果。</div><div class="line"><span class="number">2</span>、以团队为导向的学习能缓解这种混乱状态。</div><div class="line">顺从专业人士都在建立一种“我们和他们为同一目标而奋斗”的氛围，这样我们往往将其作为<span class="string">"战友"</span>来对待。</div><div class="line">糟糕的消息会让报信人在别人的印象不好，反之好消息会很好。</div><div class="line">制造商们宗师急着将自己的产品和当前的文化热潮联系起来（喜洋洋和灰太狼、熊出没）</div><div class="line">产品和当前名人联系起来</div><div class="line">午宴术：人们在就餐期间对接触到的人或事更为喜欢。（酒席谈合同）</div><div class="line">人们倾向于答应自己认识和喜欢的人提出的要求。</div><div class="line">外表魅力是影响整体好感度的个人特点之一。（容貌、才识、气质）</div><div class="line">相识性有助于获得好感和顺从。</div><div class="line">警惕对提出要求的人的过度好感。</div></pre></td></tr></table></figure>
+
+<h2 id="权威">权威</h2>
+<hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">服从权威的命令，总能给我们一些实际的好处。</div><div class="line">很多情况下，当权威说了话后，其它该考虑的事也变得不相关了。</div><div class="line">头衔除了能让陌生人表现的更恭顺，还在别人眼里更高大。</div><div class="line">权利和权威的外部特征，说不定靠假冒伪劣的材料编造出来的。（伪造联合国身份到监狱提走犯人）</div><div class="line">这个权威是真正的专家吗？（假交警收费、电话冒充权威机构诈骗）</div><div class="line">这个专家说的是真话吗：会不会为了某种利益。</div><div class="line">有时缺点能变成优点(比如求职，一些负面的评价，反而能带来有利的效果)</div></pre></td></tr></table></figure>
+
+<h2 id="稀缺">稀缺</h2>
+<hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">假若瑕疵把一个东西变稀缺了，垃圾也能化成这钱的宝贝。</div><div class="line">对失去某种东西的恐惧，似乎要比对获得同一物品的渴望，更能激发人们的行动力。</div><div class="line">根据一样东西的难易程度，迅速准确地判断它的质量。</div><div class="line">每当获取东西比以前难，我们就越发地想要得到它。</div><div class="line">想让信息变得珍贵，不一定要封杀它，只要把它弄成稀缺就好。</div><div class="line">自由这种东西，给一点又拿走，比完全不给跟危险。（移动、苏联戈尔巴乔夫）</div><div class="line">父母管教不能前后不依，，孩子反叛心很强。</div><div class="line">渴望拥有一件众人竞争的东西，几乎是出于本能的身体反应。（小米、苹果手机）</div><div class="line">在碰到稀缺资源加竞争的魔鬼组合尤其小心谨慎。</div><div class="line">稀缺的东西并不因为难以弄到手，就变得更好吃、更好听、更好用。</div><div class="line">一旦我们觉得自己在短缺影响下产生了高度的情绪波动，我们就应该把这种波动当成暂停的信号。（问问自己，为什么想要那件东西）</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[影响力读后感]]>
+    
+    </summary>
+    
+      <category term="影响力" scheme="http://felixmonkey.github.io/tags/%E5%BD%B1%E5%93%8D%E5%8A%9B/"/>
+    
+      <category term="书籍" scheme="http://felixmonkey.github.io/categories/%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Linux 命令 2]]></title>
+    <link href="http://felixmonkey.github.io/2014/11/18/Linux-%E5%91%BD%E4%BB%A4-2/"/>
+    <id>http://felixmonkey.github.io/2014/11/18/Linux-命令-2/</id>
+    <published>2014-11-18T08:01:30.000Z</published>
+    <updated>2014-12-17T07:55:41.000Z</updated>
+    <content type="html"><![CDATA[<p><a id="more"></a></p>
+<h2 id="关机">关机</h2>
+<hr>
+<p>shutdown 参数 时间<br>option:<br>　　-c: 取消前一个关机命令<br>　　-h: 关机<br>　　-r: 重启(reboot)</p>
+<h2 id="系统默认运行级别">系统默认运行级别</h2>
+<hr>
+<p>cat /etc/inittab: 修改系统默认运行级别(id:3:initdefault:)<br>runlevel: 查看系统运行级别<br>logout: 退出登录命令（推荐这习惯）</p>
+<h2 id="系统设备挂载">系统设备挂载</h2>
+<hr>
+<p>mount: 查询系统中已经挂载的设备<br>mount -a：依据配置文件/etc/fstab的内容，自动挂载<br>挂载光盘:<br>　　mkdir /mnt/cdrom/: 建立挂载点(mnt目录可换成media 、misc)<br>　　mount  /dev/cdrom /mnt/cdrom/: 挂载光盘<br>　　= mount -t iso9660 /dev/sr0 /dev/cdrom/<br>umount 设备文件名或挂载点：卸载(注意当前路径不能在cdrom目录中)<br>umount /mnt/cdrom<br>fdisk -l: 查看U盘/硬盘设备文件名</p>
+<h2 id="查看登录用户信息">查看登录用户信息</h2>
+<hr>
+<p>w、who：查看登录用户信息<br>last: 查询当前登录和过去登录的用户信息(默认读取/var/log/wtmp文件数据)<br>lsatlog: 查询所有用户登录时间</p>
+<h2 id="输出命令echo">输出命令echo</h2>
+<hr>
+<p>echo: 输出命令<br>echo -e: 可识别控制字符<br>echo -e \: 按照16进制同样可以输出<br>　　\e[1;31m : 开启颜色显示（31m为红色）<br>　　\e[0m: 关闭颜色</p>
+<h2 id="脚本执行">脚本执行</h2>
+<hr>
+<p><code>#</code>在linux中表示注释（但是在脚本中<code>#!/bin/bash</code>必须写入）<br>脚本执行(两种方法):<br>　　(1). chmod 755 脚本文件  然后执行文件<br>　　(2). bash 脚本文件（可以不赋权限）
+　　</p>
+<h2 id="参考资料">参考资料</h2>
+<hr>
+<p>[1] <a href="http://www.imooc.com/learn/175" target="_blank" rel="external">慕课网 Linux达人养成计划I</a></p>
+<p><img src="/img/11.jpg" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[Linux 常用命令]]>
+    
+    </summary>
+    
+      <category term="linux命令" scheme="http://felixmonkey.github.io/tags/linux%E5%91%BD%E4%BB%A4/"/>
+    
+      <category term="Linux" scheme="http://felixmonkey.github.io/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[python-remove()使用注意]]></title>
+    <link href="http://felixmonkey.github.io/2014/11/16/python-remove-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F/"/>
+    <id>http://felixmonkey.github.io/2014/11/16/python-remove-使用注意/</id>
+    <published>2014-11-16T07:49:59.000Z</published>
+    <updated>2014-11-16T08:07:24.000Z</updated>
+    <content type="html"><![CDATA[<p><a id="more"></a><br>remove( ) 使用注意</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">removeDups</span><span class="params">(L1, L2)</span>:</span></div><div class="line">    <span class="keyword">for</span> e1 <span class="keyword">in</span> L1:</div><div class="line">        <span class="keyword">if</span> e1 <span class="keyword">in</span> L2:</div><div class="line">            L1.remove(e1)</div><div class="line"></div><div class="line"></div><div class="line">L1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">L2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>]</div><div class="line">removeDups(L1, L2)</div><div class="line">print(L1) </div><div class="line"><span class="comment">#[2, 3, 4]</span></div><div class="line"><span class="comment">#注意不能直接在对L1遍历时对L1进行remove，否则如上所示，需新建一list</span></div><div class="line"><span class="comment">#相当于复制一个list，具体如下所示：</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">removeDupsBetter</span><span class="params">(L1, L2)</span>:</span></div><div class="line">    L1Start = L1[:] <span class="comment">#L1Sart为新的list</span></div><div class="line">    <span class="keyword">for</span> e1 <span class="keyword">in</span> L1Start:</div><div class="line">        <span class="keyword">if</span> e1 <span class="keyword">in</span> L2:</div><div class="line">            L1.remove(e1)</div><div class="line"></div><div class="line">L1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">L2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>]</div><div class="line">removeDupsBetter(L1, L2)</div><div class="line">print(L1)</div><div class="line"><span class="comment">#[3, 4]</span></div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[python remove()使用注意]]>
+    
+    </summary>
+    
+      <category term="python tricks" scheme="http://felixmonkey.github.io/tags/python-tricks/"/>
+    
+      <category term="python" scheme="http://felixmonkey.github.io/categories/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Linux 命令]]></title>
+    <link href="http://felixmonkey.github.io/2014/11/16/Linux-%E5%91%BD%E4%BB%A4/"/>
+    <id>http://felixmonkey.github.io/2014/11/16/Linux-命令/</id>
+    <published>2014-11-16T06:52:32.000Z</published>
+    <updated>2014-12-17T07:57:45.000Z</updated>
+    <content type="html"><![CDATA[<p><a id="more"></a></p>
+<h2 id="文件处理命令">文件处理命令</h2>
+<hr>
+<p>ls -a: 显示文件包括隐藏文件<br>ls -l: 显示文件详细信息 == ll<br>ls -d: 显示目录<br>mkdir -p xxx/xxx: 创建多层目录(没有参数p，则只能创建一个)<br>touch: 创建文件<br>cat: 查看文件内容<br>cd: change directory<br>cd .: 当前目录<br>cd ..: 上一级目录<br>cd -: 上一次目录<br>ctrl l: 清屏 == clear<br>pwd: print working directory<br>rm -rf 文件或目录: 删除文件或目录(<code>注意也可删除/</code>)<br>mv: 文件改名/移动(同一目录下/非同一目录下)</p>
+<h2 id="压缩命令">压缩命令</h2>
+<hr>
+<p>zip: 压缩文件名 源文件 #压缩文件<br>zip -r: 压缩文件名 源目录 #压缩目录<br>unzip 文件或文件夹: 解压缩.zip文件<br>gzip 源文件:压缩为.gz格式的压缩文件，源文件会消失<br>gzip -c 源文件 &gt; 压缩文件: 则会保留源文件<br>gzip -r 目录: 压缩目录下的所有子文件，但不能压缩目录<br>gzip -d 压缩文件: 解压缩<br>gunzip: 解压缩<br>bzip2 源文件:压缩为.bz2格式的压缩文件，源文件会消失 #bzip2不能压缩目录<br>bzip2 -k 源文件: 保留源文件<br>bzip2 -d 压缩文件: 解压缩，-k保留压缩文件<br>bunzip2  压缩文件: 解压缩，-k保留压缩文件</p>
+<p>tar -cvf 打包文件名 源文件<br>‘option’：<br>    -c: 打包<br>    -v: 显示过程<br>    -f: 指定打包后的文件名</p>
+<p>tar -xvf 打包文件名<br>‘option’：<br>    -x: 解打包<br>其实.tar.gz格式是先打包为.tar格式，再压缩为.gz格式</p>
+<p>tar -zcvf 压缩包名.tar.gz 源文件<br>‘option’：<br>    -z: 压缩为.tar.gz格式</p>
+<p>tar -zxvf 压缩包名.tar.gz<br>‘option’：<br>    -x: 解压缩为.tar.gz格式</p>
+<p>tar -jcvf 压缩包名.tar.bz2源文件<br>‘option’：<br>    -z: 压缩为.tar.bz2格式</p>
+<p>tar -jxvf 压缩包名.tar.bz2源文件<br>‘option’：<br>    -x: 解缩为.tar.bz2格式    </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[Linux 常用命令]]>
+    
+    </summary>
+    
+      <category term="linux命令" scheme="http://felixmonkey.github.io/tags/linux%E5%91%BD%E4%BB%A4/"/>
+    
+      <category term="Linux" scheme="http://felixmonkey.github.io/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://felixmonkey.github.io/2014/11/13/hello-world/"/>
+    <id>http://felixmonkey.github.io/2014/11/13/hello-world/</id>
+    <published>2014-11-13T13:47:45.000Z</published>
+    <updated>2014-11-16T06:47:03.000Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+<h2 id="Quick_Start">Quick Start</h2>
+<h3 id="Create_a_new_post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br>]]>
+    
+    </summary>
+    
+  </entry>
+  
+</feed>

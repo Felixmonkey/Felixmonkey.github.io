@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux 命令 2 | Felixmonkey&#39;s blog</title>
+  <meta name="baidu-site-verification" content="MmXbjwJb9V" />
+  <meta name="author" content="Felixmonkey">
+  
+  <meta name="description" content="Linux 常用命令">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Linux 命令 2"/>
+  <meta property="og:site_name" content="Felixmonkey&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Felixmonkey&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'true']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Felixmonkey&#39;s blog</a></h1>
+  <h2><a href="/">追寻兴趣时保持年轻，与人相处时保持成熟。</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>   
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">存档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-11-18T08:01:30.000Z"><a href="/2014/11/18/Linux-命令-2/">11月 18 2014</a></time>
+      
+      
+  
+    <h1 class="title">Linux 命令 2</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+				
+				<div id="toc" class="toc-article">
+						<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关机"><span class="toc-number">1.</span> <span class="toc-text">关机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统默认运行级别"><span class="toc-number">2.</span> <span class="toc-text">系统默认运行级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统设备挂载"><span class="toc-number">3.</span> <span class="toc-text">系统设备挂载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看登录用户信息"><span class="toc-number">4.</span> <span class="toc-text">查看登录用户信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出命令echo"><span class="toc-number">5.</span> <span class="toc-text">输出命令echo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#脚本执行"><span class="toc-number">6.</span> <span class="toc-text">脚本执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li></ol>
+		</div>
+		
+        <p><a id="more"></a></p>
+<h2 id="关机">关机</h2>
+<hr>
+<p>shutdown 参数 时间<br>option:<br>　　-c: 取消前一个关机命令<br>　　-h: 关机<br>　　-r: 重启(reboot)</p>
+<h2 id="系统默认运行级别">系统默认运行级别</h2>
+<hr>
+<p>cat /etc/inittab: 修改系统默认运行级别(id:3:initdefault:)<br>runlevel: 查看系统运行级别<br>logout: 退出登录命令（推荐这习惯）</p>
+<h2 id="系统设备挂载">系统设备挂载</h2>
+<hr>
+<p>mount: 查询系统中已经挂载的设备<br>mount -a：依据配置文件/etc/fstab的内容，自动挂载<br>挂载光盘:<br>　　mkdir /mnt/cdrom/: 建立挂载点(mnt目录可换成media 、misc)<br>　　mount  /dev/cdrom /mnt/cdrom/: 挂载光盘<br>　　= mount -t iso9660 /dev/sr0 /dev/cdrom/<br>umount 设备文件名或挂载点：卸载(注意当前路径不能在cdrom目录中)<br>umount /mnt/cdrom<br>fdisk -l: 查看U盘/硬盘设备文件名</p>
+<h2 id="查看登录用户信息">查看登录用户信息</h2>
+<hr>
+<p>w、who：查看登录用户信息<br>last: 查询当前登录和过去登录的用户信息(默认读取/var/log/wtmp文件数据)<br>lsatlog: 查询所有用户登录时间</p>
+<h2 id="输出命令echo">输出命令echo</h2>
+<hr>
+<p>echo: 输出命令<br>echo -e: 可识别控制字符<br>echo -e \: 按照16进制同样可以输出<br>　　\e[1;31m : 开启颜色显示（31m为红色）<br>　　\e[0m: 关闭颜色</p>
+<h2 id="脚本执行">脚本执行</h2>
+<hr>
+<p><code>#</code>在linux中表示注释（但是在脚本中<code>#!/bin/bash</code>必须写入）<br>脚本执行(两种方法):<br>　　(1). chmod 755 脚本文件  然后执行文件<br>　　(2). bash 脚本文件（可以不赋权限）
+　　</p>
+<h2 id="参考资料">参考资料</h2>
+<hr>
+<p>[1] <a href="http://www.imooc.com/learn/175" target="_blank" rel="external">慕课网 Linux达人养成计划I</a></p>
+<p><img src="/img/11.jpg" alt=""></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Linux/">Linux</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/linux命令/">linux命令</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<nav id="pagination" >
+    
+    <a href="/2014/12/17/影响力/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2014/11/16/python-remove-使用注意/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- 多说热评文章 start -->
+	<div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+<!-- 多说热评文章 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://felixmonkey.github.io/2014/11/18/Linux-命令-2/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:felixmonkey.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/R/">R</a><small>1</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/书籍/">书籍</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/R语言/" style="font-size: 10.00px;">R语言</a><a href="/tags/linux命令/" style="font-size: 20.00px;">linux命令</a><a href="/tags/python-tricks/" style="font-size: 10.00px;">python tricks</a><a href="/tags/影响力/" style="font-size: 10.00px;">影响力</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2774928135&verifier=a427a000&dpc=1">
+</iframe>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" title="hexo">hexo</a></li>
+<li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
+<li><a href="http://zjdian.com/" title="中继点's Blog">中继点</a></li>
+<li><a href="http://leijun00.github.io/" title="雷军's Blog">程序员雷军</a></li>
+<li><a href="http://blog.csdn.net/v_july_v/" title="结构之法 算法之道">研究者July</a></li>
+<li><a href="http://blog.csdn.net/abcjennifer/" title="Rachel Zhang's Blog">Rachel Zhang的专栏</a></li>
+<li><a href="http://www.cnblogs.com/tornadomeet/archive/2012/06/24/2560261.html" title="tornadomeet">tornadomeet</a></li>
+<li><a href="http://blog.csdn.net/zouxy09/article/details/14222605/" title="zouxy09的专栏">zouxy09的专栏</a></li>
+<li><a href="http://www.cnblogs.com/matthewbai/" title="matthew-bai">matthew-bai</a></li>
+<li><a href="http://blog.csdn.net/itplus/article/details/21905449/" title="peghoty's Blog">peghoty</a></li>
+<li><a href="http://www.cnblogs.com/jerrylead/tag/Machine%20Learning/" title="JerryLead's Blog">JerryLead</a></li>
+<li><a href="http://www.52nlp.cn/category/hidden-markov-model/page/3" title="我爱自然语言处理">我爱自然语言处理</a></li>
+<li><a href="http://mindhacks.cn/" title="刘未鹏's Blog">刘未鹏</a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Felixmonkey
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'felixmonkey';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57377559-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
