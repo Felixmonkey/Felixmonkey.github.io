@@ -144,7 +144,7 @@
 <h2 id="读写数据">读写数据</h2>
 <hr>
 <p><code>read.csv( )</code>和<code>read.table( )</code>是相同的，除了<code>read.csv( )</code>的默认分隔符是<code>逗号</code>,而<code>read.table( )</code>是<code>空格</code>。<br><code>write.table()</code> #写文件</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">data &lt;- read.table(<span class="string">"foo.txt"</span>)</div><div class="line">names( ) <span class="comment">##列的name</span></div><div class="line">row.names( ) <span class="comment">##行的name</span></div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">data &lt;- read.table(<span class="string">"foo.txt"</span>, header = <span class="literal">TRUE</span>) <span class="comment">##header表示第一行是变量名称</span></div><div class="line">names( ) <span class="comment">##列的name</span></div><div class="line">row.names( ) <span class="comment">##行的name</span></div></pre></td></tr></table></figure>
 
 <p><code>readLines</code>逐行读取文本文件（写：writeLines）</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##用dput写一个文件对象或重新创建,dput只能写一个对象</span></div><div class="line">&gt; y &lt;- data.frame(<span class="variable">a =</span> <span class="number">1</span>, <span class="variable">b =</span> <span class="string">"a"</span>)</div><div class="line">&gt; dput(y)</div><div class="line">structure(list(<span class="variable">a =</span> <span class="number">1</span>,</div><div class="line"> <span class="variable">b =</span> structure(<span class="number">1</span>L, .<span class="variable">Label =</span> <span class="string">"a"</span>,</div><div class="line"> <span class="variable">class =</span> <span class="string">"factor"</span>)),</div><div class="line"> .<span class="variable">Names =</span> c(<span class="string">"a"</span>, <span class="string">"b"</span>), row.<span class="variable">names =</span> c(NA, -<span class="number">1</span>L),</div><div class="line"> <span class="variable">class =</span> <span class="string">"data.frame"</span>)</div><div class="line">&gt; dput(y, <span class="variable">file =</span> <span class="string">"y.R"</span>)</div><div class="line">&gt; new.y &lt;- dget(<span class="string">"y.R"</span>)</div><div class="line">&gt; new.y</div><div class="line">  a b</div><div class="line"><span class="number">1</span> <span class="number">1</span> a</div></pre></td></tr></table></figure>
@@ -205,7 +205,7 @@
 </nav>
 <section id="comment">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+	<div class="ds-thread" data-thread-key="2014/12/17/R语言基础知识2/" data-title="R语言基础知识2" data-url="http://felixmonkey.github.io/2014/12/17/R语言基础知识2/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -326,6 +326,7 @@ var duoshuoQuery = {short_name:"felixmonkey"};
 <li><a href="http://www.cnblogs.com/jerrylead/tag/Machine%20Learning/" title="JerryLead's Blog">JerryLead</a></li>
 <li><a href="http://www.52nlp.cn/category/hidden-markov-model/page/3" title="我爱自然语言处理">我爱自然语言处理</a></li>
 <li><a href="http://mindhacks.cn/" title="刘未鹏's Blog">刘未鹏</a></li>
+<li><a href="http://dataunion.org/?tag=机器学习/" title="数盟">数盟</a></li>
 </ul>
 </div>
 </aside>
@@ -333,7 +334,7 @@ var duoshuoQuery = {short_name:"felixmonkey"};
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2014 Felixmonkey
+  &copy; 2015 Felixmonkey
   
 </div>
 <div class="clearfix"></div></footer>
