@@ -4,7 +4,7 @@
   <subtitle><![CDATA[追寻兴趣时保持年轻，与人相处时保持成熟。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://felixmonkey.github.io/"/>
-  <updated>2015-12-19T13:58:07.229Z</updated>
+  <updated>2015-12-19T14:03:57.025Z</updated>
   <id>http://felixmonkey.github.io/</id>
   
   <author>
@@ -19,10 +19,8 @@
     <link href="http://felixmonkey.github.io/2015/01/19/Matlab-%E6%96%87%E4%BB%B6%E5%85%B3%E8%81%94/"/>
     <id>http://felixmonkey.github.io/2015/01/19/Matlab-文件关联/</id>
     <published>2015-01-19T13:52:15.000Z</published>
-    <updated>2015-12-19T13:57:54.000Z</updated>
-    <content type="html"><![CDATA[<a id="more"></a>
-
-<p><strong>Matlab 2014b 文件关联</strong></p>
+    <updated>2015-12-19T13:59:47.000Z</updated>
+    <content type="html"><![CDATA[<p><a id="more"></a><br><strong>Matlab 2014b 文件关联</strong></p>
 <p><code>注意要以管理员身份打开MATLAB\R2014b\bin\win64\Matlab.exe</code>（Matlab安装的位置）<br>然后在命令窗口中输入以下命令：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cwd=pwd;</div><div class="line">cd(<span class="matrix">[matlabroot <span class="string">'\mcr\toolbox\matlab\winfun\private'</span>]</span>);</div><div class="line">fileassoc(<span class="string">'add'</span>,<span class="cell">{<span class="string">'.m'</span>,<span class="string">'.mat'</span>,<span class="string">'.fig'</span>,<span class="string">'.p'</span>,<span class="string">'.mdl'</span>,[<span class="string">'.'</span> mexext]}); %重点</span></div><div class="line">cd(cwd);</div><div class="line">disp(<span class="string">'Changed Windows file associations. FIG, M, MAT, MDL, MEX, and P files are now associated with MATLAB.'</span>)</div></pre></td></tr></table></figure>
 
