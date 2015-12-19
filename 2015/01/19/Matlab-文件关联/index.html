@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档：2014 | Felixmonkey&#39;s blog</title>
+  <title>Matlab 文件关联 | Felixmonkey&#39;s blog</title>
   <meta name="baidu-site-verification" content="MmXbjwJb9V" />
   <meta name="author" content="Felixmonkey">
   
-  <meta name="description" content="Felixmonkey&#39;s blog about machine learning, deep learning, data mining, R, NLP">
+  <meta name="description" content="Matlab 文件关联">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="Matlab 文件关联"/>
   <meta property="og:site_name" content="Felixmonkey&#39;s blog"/>
 
   
@@ -61,109 +61,134 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2014</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-01-19T13:52:15.000Z"><a href="/2015/01/19/Matlab-文件关联/">1月 19 2015</a></time>
+      
+      
+  
+    <h1 class="title">Matlab 文件关联</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+				
+				<div id="toc" class="toc-article">
+						<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+        <a id="more"></a>
+
+<p><strong>Matlab 2014b 文件关联</strong></p>
+<p><code>注意要以管理员身份打开MATLAB\R2014b\bin\win64\Matlab.exe</code>（Matlab安装的位置）<br>然后在命令窗口中输入以下命令：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cwd=pwd;</div><div class="line">cd(<span class="matrix">[matlabroot <span class="string">'\mcr\toolbox\matlab\winfun\private'</span>]</span>);</div><div class="line">fileassoc(<span class="string">'add'</span>,<span class="cell">{<span class="string">'.m'</span>,<span class="string">'.mat'</span>,<span class="string">'.fig'</span>,<span class="string">'.p'</span>,<span class="string">'.mdl'</span>,[<span class="string">'.'</span> mexext]}); %重点</span></div><div class="line">cd(cwd);</div><div class="line">disp(<span class="string">'Changed Windows file associations. FIG, M, MAT, MDL, MEX, and P files are now associated with MATLAB.'</span>)</div></pre></td></tr></table></figure>
 
 
-  <div class="archive">
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-12-17T08:46:33.000Z"><a href="/2014/12/17/如何成为一名数据科学家？/">12月 17 2014</a></time>
-            
-              <h1 class="title"><a href="/2014/12/17/如何成为一名数据科学家？/">如何成为一名数据科学家？</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-12-17T08:11:41.000Z"><a href="/2014/12/17/R语言基础知识2/">12月 17 2014</a></time>
-            
-              <h1 class="title"><a href="/2014/12/17/R语言基础知识2/">R语言基础知识2</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-12-17T07:34:18.000Z"><a href="/2014/12/17/R语言基础知识1/">12月 17 2014</a></time>
-            
-              <h1 class="title"><a href="/2014/12/17/R语言基础知识1/">R语言基础知识1</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-12-17T07:24:49.000Z"><a href="/2014/12/17/影响力/">12月 17 2014</a></time>
-            
-              <h1 class="title"><a href="/2014/12/17/影响力/">影响力</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-11-18T08:01:30.000Z"><a href="/2014/11/18/Linux-命令-2/">11月 18 2014</a></time>
-            
-              <h1 class="title"><a href="/2014/11/18/Linux-命令-2/">Linux 命令 2</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-11-16T07:49:59.000Z"><a href="/2014/11/16/python-remove-使用注意/">11月 16 2014</a></time>
-            
-              <h1 class="title"><a href="/2014/11/16/python-remove-使用注意/">python-remove()使用注意</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-11-16T06:52:32.000Z"><a href="/2014/11/16/Linux-命令/">11月 16 2014</a></time>
-            
-              <h1 class="title"><a href="/2014/11/16/Linux-命令/">Linux 命令</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-11-13T13:47:45.000Z"><a href="/2014/11/13/hello-world/">11月 13 2014</a></time>
-            
-              <h1 class="title"><a href="/2014/11/13/hello-world/">Hello World</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Matlab/">Matlab</a>
   </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Matlab/">Matlab</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<nav id="pagination" >
+    
+    
+    <a href="/2014/12/17/如何成为一名数据科学家？/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/01/19/Matlab-文件关联/" data-title="Matlab 文件关联" data-url="http://felixmonkey.github.io/2015/01/19/Matlab-文件关联/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+<!-- 多说热评文章 start -->
+	<div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+<!-- 多说热评文章 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"felixmonkey"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://felixmonkey.github.io/2015/01/19/Matlab-文件关联/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -247,7 +272,7 @@ var disqus_shortname = 'felixmonkey';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
